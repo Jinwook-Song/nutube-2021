@@ -5,7 +5,7 @@ const PORT = 3000;
 const app = express();
 
 const loggerMiddleware = (req, res, next) => {
-  console.log(`${req.method} ${req.url}`);
+  console.log(`${req.method}: ${req.url}`);
   next();
 };
 const privateMiddleware = (req, res, next) => {
@@ -15,15 +15,23 @@ const privateMiddleware = (req, res, next) => {
   }
   next();
 };
+const redirectMiddleware = (req, res, next) => {
+  console.log("You can't enter there");
+  return res.redirect("/");
+};
+
+const handleHome = (req, res) => res.send("<h1>Welcome</h1>");
+const handleLogin = (req, res) => res.send("Login Here");
 
 // Global middleware
-app.use(loggerMiddleware);
-app.use(privateMiddleware);
+app.use(loggerMiddleware, privateMiddleware);
 
-app.get("/", (req, res) => res.send("Welcome"));
-app.get("/login", (req, res) => res.send("Login Here"));
+app.get("/", handleHome);
+app.get("/login", handleLogin);
 
-const handleListening = () => {
+app.use(redirectMiddleware);
+
+const handleListening = () =>
   console.log(`Listening on http://localhost:${PORT} ✅`);
-};
+
 app.listen(PORT, handleListening);
