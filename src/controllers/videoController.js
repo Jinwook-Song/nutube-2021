@@ -1,10 +1,7 @@
-const fakeUser = {
-  userName: "Jinwook",
-  loggedIn: false,
+export const homepage = (req, res) => {
+  const videos = [];
+  return res.render("home", { pageTitle: "Home", videos });
 };
-
-export const homepage = (req, res) =>
-  res.render("home", { pageTitle: "Home", fakeUser });
 export const see = (req, res) => res.render("watch", { pageTitle: "Watch" });
 export const edit = (req, res) => res.render("edit", { pageTitle: "Edit" });
 export const search = (req, res) =>

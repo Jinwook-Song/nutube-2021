@@ -8,16 +8,6 @@ html(lang="en")
         title #{pageTitle} | Nutube
     body 
         header 
-            if fakeUser.loggedIn 
-                small Hello #{fakeUser.userName}
-            nav 
-                ul 
-                    if fakeUser.loggedIn
-                        li
-                            a(href="/logout") Log out
-                    else
-                        li
-                            a(href="/login") Login
             h1=pageTitle
         main
             block content
