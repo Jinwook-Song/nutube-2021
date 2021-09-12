@@ -1,6 +1,13 @@
 extends ../templates/base
 include ../mixins/video
 
+block upload 
+    nav 
+        ul 
+            li 
+                a(href="/videos/upload") Upload Video
+
+
 block content
     h2 Welcome here you will see the trending videos
     ul

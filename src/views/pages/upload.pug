@@ -1,4 +1,6 @@
 extends ../templates/base
 
 block content 
-    h1 Upload Video
+    form(method="POST", action="/videos/upload")
+        input(name="title", placeholder="Title", required, type="text")
+        input(type="submit", value="Upload Video")
