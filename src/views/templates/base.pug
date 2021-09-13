@@ -9,7 +9,11 @@ html(lang="en")
     body 
         header 
             h1=pageTitle
-            block upload
+            nav 
+                ul 
+                    li 
+                        a(href="/") Home
+                block upload
         main
             block content
     include ../partials/footer
