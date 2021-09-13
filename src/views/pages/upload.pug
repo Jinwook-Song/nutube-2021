@@ -1,6 +1,8 @@
 extends ../templates/base
 
 block content 
-    form(method="POST", action="/videos/upload")
+    form(method="POST")
         input(name="title", placeholder="Title", required, type="text")
+        input(name="description", placeholder="Description", required, type="text")
+        input(name="hashtags", placeholder="Hashtags, seperated by comma.", required, type="text")
         input(type="submit", value="Upload Video")
