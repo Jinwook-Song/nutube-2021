@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// for data Validation
 const videoSchema = new mongoose.Schema({
   title: { type: String, required: true, trim: true, maxLength: 80 },
   description: { type: String, required: true, trim: true, minLength: 10 },
@@ -11,12 +12,14 @@ const videoSchema = new mongoose.Schema({
   },
 });
 
+// Static funtion
 videoSchema.static("formatHashtags", function (hashtags) {
   return hashtags
     .split(",")
     .map((word) => (word.startsWith("#") ? word : `#${word}`));
 });
 
+// Create data model
 const Video = mongoose.model("Video", videoSchema);
 
 export default Video;

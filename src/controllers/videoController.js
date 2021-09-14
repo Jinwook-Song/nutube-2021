@@ -1,5 +1,6 @@
 import Video from "../models/Video";
 
+// Home
 export const home = async (req, res) => {
   try {
     const videos = await Video.find({}).sort({ createdAt: -1 });
@@ -8,6 +9,8 @@ export const home = async (req, res) => {
     return res.send(`Error: ${error}`);
   }
 };
+
+// Watch Video
 export const watch = async (req, res) => {
   const { id } = req.params;
   const video = await Video.findById(id);
@@ -17,6 +20,8 @@ export const watch = async (req, res) => {
     return res.render("watch", { pageTitle: video.title, video });
   }
 };
+
+// Edit Video
 export const getEdit = async (req, res) => {
   const { id } = req.params;
   const video = await Video.findById(id);
@@ -39,6 +44,8 @@ export const postEdit = async (req, res) => {
   });
   return res.redirect(`/videos/${id}`);
 };
+
+// Upload Video
 export const getUpload = (req, res) => {
   return res.render("upload", { pageTitle: "Upload Video" });
 };
@@ -58,11 +65,15 @@ export const postUpload = async (req, res) => {
   }
   return res.redirect("/");
 };
+
+// Delete Video
 export const deleteVideo = async (req, res) => {
   const { id } = req.params;
   await Video.findOneAndDelete(id);
   return res.redirect("/");
 };
+
+// Search Video
 export const search = async (req, res) => {
   let videos = [];
   const { keyword } = req.query;
