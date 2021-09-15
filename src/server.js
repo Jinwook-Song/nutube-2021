@@ -14,6 +14,7 @@ app.set("views", process.cwd() + "/src/views/pages");
 app.use(logger);
 app.use(express.urlencoded({ extended: true }));
 
+// Send cookie to browser from backend(Server)
 app.use(
   session({
     secret: "Hello!",
