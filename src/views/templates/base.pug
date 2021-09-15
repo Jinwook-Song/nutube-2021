@@ -5,10 +5,11 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet", href="https://unpkg.com/mvp.css")
-        title #{pageTitle} | Nutube
+        title #{pageTitle} | #{siteName}
     body 
         header 
             h1=pageTitle
+            h2 #{sexy}
             nav 
                 ul 
                     li 
@@ -17,10 +18,16 @@ html(lang="en")
                         a(href="/search") Search
                     block upload
                 ul
-                    li 
-                        a(href="/join") Join
-                    li 
-                        a(href="/login") Login
+                    if loggedIn
+                        li 
+                            a(href="/logout") Log Out
+                        li 
+                            a(href="/profile") #{loggedInUser.username}'s Profile
+                    else
+                        li 
+                            a(href="/join") Join
+                        li 
+                            a(href="/login") Login
         main
             block content
     include ../partials/footer
