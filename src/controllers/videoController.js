@@ -21,6 +21,27 @@ export const watch = async (req, res) => {
   }
 };
 
+// Upload Video
+export const getUpload = (req, res) => {
+  return res.render("upload", { pageTitle: "Upload Video" });
+};
+export const postUpload = async (req, res) => {
+  const { title, description, hashtags } = req.body;
+  try {
+    await Video.create({
+      title,
+      description,
+      hashtags: Video.formatHashtags(hashtags),
+    });
+  } catch (error) {
+    return res.status(400).render("upload", {
+      pageTitle: "Upload Video",
+      errorMessage: error._message,
+    });
+  }
+  return res.redirect("/");
+};
+
 // Edit Video
 export const getEdit = async (req, res) => {
   const { id } = req.params;
@@ -43,27 +64,6 @@ export const postEdit = async (req, res) => {
     hashtags: Video.formatHashtags(hashtags),
   });
   return res.redirect(`/videos/${id}`);
-};
-
-// Upload Video
-export const getUpload = (req, res) => {
-  return res.render("upload", { pageTitle: "Upload Video" });
-};
-export const postUpload = async (req, res) => {
-  const { title, description, hashtags } = req.body;
-  try {
-    await Video.create({
-      title,
-      description,
-      hashtags: Video.formatHashtags(hashtags),
-    });
-  } catch (error) {
-    return res.status(400).render("upload", {
-      pageTitle: "Upload Video",
-      errorMessage: error._message,
-    });
-  }
-  return res.redirect("/");
 };
 
 // Delete Video
