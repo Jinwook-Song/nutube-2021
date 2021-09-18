@@ -16,9 +16,9 @@ html(lang="en")
                         a(href="/") Home
                     li 
                         a(href="/search") Search
-                    block upload
                 ul
                     if loggedIn
+                        block upload
                         li 
                             a(href="users/logout") Log Out
                         li 
