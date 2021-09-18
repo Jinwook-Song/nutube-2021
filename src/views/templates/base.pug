@@ -23,6 +23,8 @@ html(lang="en")
                             a(href="users/logout") Log Out
                         li 
                             a(href="/profile") #{loggedInUser.username}'s Profile
+                        li 
+                            a(href="users/edit") Edit Profile
                     else
                         li 
                             a(href="/join") Join
