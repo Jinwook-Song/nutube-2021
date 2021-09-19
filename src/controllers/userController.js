@@ -165,4 +165,38 @@ export const postEdit = async (req, res) => {
   req.session.user = updatedUser;
   return res.redirect("/users/edit");
 };
+
+export const getChangePassword = (req, res) => {
+  if (req.session.user.githubLogin === true) {
+    return res.redirect("/");
+  }
+  return res.render("change-password", { pageTitle: "Change Password" });
+};
+export const postChangePassword = async (req, res) => {
+  const {
+    session: {
+      user: { _id: id },
+    },
+    body: { oldPW, newPW, newPW2 },
+  } = req;
+  const user = await User.findById(id);
+  const ok = await bcrypt.compare(oldPW, user.password);
+  if (!ok) {
+    return res.status(400).render("change-password", {
+      pageTitle: "Change Password",
+      errorMessage: "The current password is incorrect.",
+    });
+  }
+  if (newPW !== newPW2) {
+    return res.status(400).render("change-password", {
+      pageTitle: "Change Password",
+      errorMessage: "The password does not match the confirmation.",
+    });
+  }
+  user.password = newPW;
+  await user.save(); // triger the pre middleware
+  // send notification
+  return res.redirect("/users/logout");
+};
+
 export const see = (req, res) => res.send("See");

@@ -20,11 +20,11 @@ html(lang="en")
                     if loggedIn
                         block upload
                         li 
-                            a(href="users/logout") Log Out
+                            a(href="/users/logout") Log Out
                         li 
-                            a(href="/profile") #{loggedInUser.username}'s Profile
+                            a(href="/users/profile") #{loggedInUser.username}'s Profile
                         li 
-                            a(href="users/edit") Edit Profile
+                            a(href="/users/edit") Edit Profile
                     else
                         li 
                             a(href="/join") Join
