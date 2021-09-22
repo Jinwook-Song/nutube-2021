@@ -9,7 +9,11 @@ import {
   see,
   startGithubLogin,
 } from "../controllers/userController";
-import { protectorMiddleware, publicOnlyMiddleware } from "../middlewares";
+import {
+  protectorMiddleware,
+  publicOnlyMiddleware,
+  uploadMiddleware,
+} from "../middlewares";
 
 const userRouter = express.Router();
 
@@ -18,7 +22,7 @@ userRouter //
   .route("/edit")
   .all(protectorMiddleware)
   .get(getEdit)
-  .post(postEdit);
+  .post(uploadMiddleware.single("avatar"), postEdit);
 userRouter
   .route("/change-password")
   .all(protectorMiddleware)

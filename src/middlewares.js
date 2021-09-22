@@ -1,3 +1,5 @@
+import multer from "multer";
+
 export const localsMiddleware = (req, res, next) => {
   // pug can access to locals object
   res.locals.loggedIn = Boolean(req.session.loggedIn);
@@ -21,3 +23,5 @@ export const publicOnlyMiddleware = (req, res, next) => {
     return res.redirect("/");
   }
 };
+
+export const uploadMiddleware = multer({ dest: "uploads/" });
