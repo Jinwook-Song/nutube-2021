@@ -15,7 +15,6 @@ export const home = async (req, res) => {
 export const watch = async (req, res) => {
   const { id } = req.params;
   const video = await Video.findById(id).populate("owner");
-  console.log(video);
   if (!video) {
     return res.status(404).render("404", { pageTitle: "Video not found." });
   } else {
@@ -36,13 +35,16 @@ export const postUpload = async (req, res) => {
     body: { title, description, hashtags },
   } = req;
   try {
-    await Video.create({
+    const newVideo = await Video.create({
       title,
       description,
       fileUrl: file.path,
       owner: id,
       hashtags: Video.formatHashtags(hashtags),
     });
+    const user = await User.findById(id);
+    user.videos.push(newVideo._id);
+    user.save();
   } catch (error) {
     return res.status(400).render("upload", {
       pageTitle: "Upload Video",
