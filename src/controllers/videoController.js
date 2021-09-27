@@ -4,7 +4,9 @@ import User from "../models/User";
 // Home
 export const home = async (req, res) => {
   try {
-    const videos = await Video.find({}).sort({ createdAt: -1 });
+    const videos = await Video.find({})
+      .sort({ createdAt: -1 })
+      .populate("owner");
     return res.render("home", { pageTitle: "Home", videos });
   } catch (error) {
     return res.send(`Error: ${error}`);
@@ -124,7 +126,7 @@ export const search = async (req, res) => {
       title: {
         $regex: new RegExp(keyword, "i"),
       },
-    });
+    }).populate("owner");
   }
   return res.render("search", { pageTitle: "Search", videos });
 };
