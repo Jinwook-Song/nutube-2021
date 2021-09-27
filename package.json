@@ -7,8 +7,8 @@
     "url": "git+https://github.com/Jinwook-Song/nutube-2021.git"
   },
   "scripts": {
-    "dev": "nodemon --exec babel-node src/init.js",
-    "assets": "webpack --config webpack.config.js"
+    "dev:backend": "nodemon",
+    "dev:frontend": "webpack"
   },
   "author": "Jinwook Song<wlsdnr129@naver.com>",
   "license": "MIT",
