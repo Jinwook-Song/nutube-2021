@@ -143,6 +143,7 @@ export const logout = (req, res) => {
   return res.redirect("/");
 };
 
+// Edit Profile
 export const getEdit = (req, res) => {
   return res.render("edit-profile", { pageTitle: "Edit Profile" });
 };
@@ -169,6 +170,7 @@ export const postEdit = async (req, res) => {
   return res.redirect("/users/edit");
 };
 
+// Change Password
 export const getChangePassword = (req, res) => {
   if (req.session.user.githubLogin === true) {
     return res.redirect("/");
@@ -202,6 +204,7 @@ export const postChangePassword = async (req, res) => {
   return res.redirect("/users/logout");
 };
 
+// Profile
 export const see = async (req, res) => {
   const { id } = req.params;
   const user = await User.findById(id).populate("videos");
