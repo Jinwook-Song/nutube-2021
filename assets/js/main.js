@@ -16,7 +16,7 @@
   \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ \"./src/frontend/scss/styles.scss\");\n\nconsole.log(\"Webpack Watch\");\n\n//# sourceURL=webpack://nutube-2021/./src/frontend/js/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ \"./src/frontend/scss/styles.scss\");\n\nconsole.log(\"main\");\nconsole.log(\"Webpack Watch\");\n\n//# sourceURL=webpack://nutube-2021/./src/frontend/js/main.js?");
 
 /***/ }),
 
