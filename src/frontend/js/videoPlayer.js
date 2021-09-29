@@ -1,10 +1,12 @@
-const video = document.querySelector("video"),
+const videoContainer = document.querySelector("#videoContainer"),
+  video = document.querySelector("video"),
   playBtn = document.querySelector("#play"),
   muteBtn = document.querySelector("#mute"),
   volumeRange = document.querySelector("#volume"),
   currentTime = document.querySelector("#currentTime"),
   totalTime = document.querySelector("#totalTime"),
-  timeline = document.querySelector("#timeline");
+  timeline = document.querySelector("#timeline"),
+  fullScreenBtn = document.querySelector("#fullScreen");
 
 video.volume = 0.5; // default volume
 
@@ -58,12 +60,24 @@ const handleTimelineChange = (event) => {
   video.currentTime = timeLineValue;
 };
 
+const handleFullScreen = () => {
+  const fullScreen = document.fullscreenElement;
+  if (fullScreen) {
+    document.exitFullscreen();
+    fullScreenBtn.innerText = "Enter Full Screen";
+  } else {
+    videoContainer.requestFullscreen();
+    fullScreenBtn.innerText = "Exit Full Screen";
+  }
+};
+
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMuteClick);
 volumeRange.addEventListener("input", handleVolumeChange);
 video.addEventListener("loadedmetadata", handleLoadedMetaData);
 video.addEventListener("timeupdate", handleTimeUpdate);
 timeline.addEventListener("input", handleTimelineChange);
+fullScreenBtn.addEventListener("click", handleFullScreen);
 
 if (video.readyState == 4) {
   handleLoadedMetaData();
