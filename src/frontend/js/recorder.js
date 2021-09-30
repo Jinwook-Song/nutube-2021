@@ -15,6 +15,7 @@ const handleDownload = () => {
   a.download = "My Recording.mp4";
   document.body.appendChild(a);
   a.click();
+  document.body.removeChild(a);
 
   init();
 };
@@ -34,7 +35,7 @@ const handleStart = () => {
 
   recorder = new MediaRecorder(stream);
   recorder.ondataavailable = (event) => {
-    console.log(event.data);
+    // only Browser, not Server
     videoFile = URL.createObjectURL(event.data);
     video.srcObject = null;
     video.src = videoFile;
