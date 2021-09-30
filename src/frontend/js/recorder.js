@@ -3,8 +3,21 @@ const video = document.querySelector("#preview");
 
 let stream;
 let recorder;
+let videoFile;
 
-const handleDownload = () => {};
+const handleDownload = () => {
+  startBtn.innerText = "Start Recording";
+  startBtn.removeEventListener("click", handleDownload);
+  startBtn.addEventListener("click", handleStart);
+
+  const a = document.createElement("a");
+  a.href = videoFile;
+  a.download = "My Recording.mp4";
+  document.body.appendChild(a);
+  a.click();
+
+  init();
+};
 
 const hanldeStop = () => {
   startBtn.innerText = "Download Recording";
@@ -22,7 +35,7 @@ const handleStart = () => {
   recorder = new MediaRecorder(stream);
   recorder.ondataavailable = (event) => {
     console.log(event.data);
-    const videoFile = URL.createObjectURL(event.data);
+    videoFile = URL.createObjectURL(event.data);
     video.srcObject = null;
     video.src = videoFile;
     video.loop = true;
