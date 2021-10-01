@@ -39,11 +39,12 @@ main {
 }
 
 hr {
-  background-color: #421b5a;
+  background-color: whitesmoke;
   border: none;
   height: 1px;
   margin: 1rem 0;
   width: 100%;
+  opacity: 0.3;
 }
 
 @keyframes goAway {
