@@ -5,3 +5,4 @@
 ### Code Challenge
 
 - [ ] upgrade video player
+- [ ] more flash messages

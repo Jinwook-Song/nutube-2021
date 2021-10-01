@@ -139,7 +139,10 @@ export const finishGithubLogin = async (req, res) => {
 
 // Logout
 export const logout = (req, res) => {
-  req.session.destroy();
+  req.flash("info", "Bye Bye");
+  req.session.loggedIn = false;
+  req.session.user = null;
+  // req.session.destroy();
   return res.redirect("/");
 };
 
@@ -173,6 +176,8 @@ export const postEdit = async (req, res) => {
 // Change Password
 export const getChangePassword = (req, res) => {
   if (req.session.user.githubLogin === true) {
+    req.flash("error", "Can't change password.");
+
     return res.redirect("/");
   }
   return res.render("change-password", { pageTitle: "Change Password" });
@@ -200,6 +205,8 @@ export const postChangePassword = async (req, res) => {
   }
   user.password = newPW;
   await user.save(); // triger the pre middleware
+  req.flash("info", "Password updated");
+
   // send notification
   return res.redirect("/users/logout");
 };
