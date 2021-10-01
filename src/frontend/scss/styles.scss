@@ -16,6 +16,7 @@
 @import "./screens/profile.scss";
 @import "./screens/edit-profile.scss";
 @import "./screens/upload.scss";
+@import "./screens/watch.scss";
 
 // Defaults
 a {
@@ -35,6 +36,14 @@ main {
   width: 100%;
   margin: 0 auto;
   margin-top: 50px;
+}
+
+hr {
+  background-color: #421b5a;
+  border: none;
+  height: 1px;
+  margin: 1rem 0;
+  width: 100%;
 }
 
 @keyframes goAway {
