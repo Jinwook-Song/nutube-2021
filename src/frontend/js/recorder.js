@@ -62,6 +62,15 @@ const handleDownload = async () => {
   thumbnailA.click();
   document.body.removeChild(thumbnailA);
 
+  // Clear memory
+  ffmpeg.FS("unlink", "recording.webm");
+  ffmpeg.FS("unlink", "output.mp4");
+  ffmpeg.FS("unlink", "thumbnail.jpg");
+
+  URL.revokeObjectURL(mp4Url);
+  URL.revokeObjectURL(thumbUrl);
+  URL.revokeObjectURL(videoFile);
+
   init();
 };
 
@@ -93,7 +102,10 @@ const handleStart = () => {
 const init = async () => {
   stream = await navigator.mediaDevices.getUserMedia({
     audio: false,
-    video: true,
+    video: {
+      width: 40,
+      height: 40,
+    },
   });
   video.srcObject = stream;
   video.play();
