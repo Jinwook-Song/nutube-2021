@@ -6,3 +6,4 @@
 
 - [ ] upgrade video player
 - [ ] more flash messages
+- [ ] delete comment
