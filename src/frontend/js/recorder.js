@@ -1,6 +1,6 @@
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
 
-const actionBtn = document.querySelector("#startBtn");
+const actionBtn = document.querySelector("#actionBtn");
 const video = document.querySelector("#preview");
 
 let stream;
