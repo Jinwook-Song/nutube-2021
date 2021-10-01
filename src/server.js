@@ -15,6 +15,11 @@ app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views/pages");
 app.use(logger);
 app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+  res.header("Cross-Origin-Embedder-Policy", "require-corp");
+  res.header("Cross-Origin-Opener-Policy", "same-origin");
+  next();
+});
 
 // Send cookie to browser from backend(Server)
 app.use(

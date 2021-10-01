@@ -105,6 +105,7 @@ const handleStart = () => {
 };
 
 const init = async () => {
+  actionBtn.disabled = true;
   stream = await navigator.mediaDevices.getUserMedia({
     audio: false,
     video: {
@@ -114,6 +115,8 @@ const init = async () => {
   });
   video.srcObject = stream;
   video.play();
+  actionBtn.disabled = false;
+  actionBtn.innerText = "Start Recording";
 };
 
 init();
