@@ -8,3 +8,4 @@
 - [ ] more flash messages
 - [ ] delete comment
 - [ ] more css
+- [ ] deployment
