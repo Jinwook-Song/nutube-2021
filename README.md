@@ -4,8 +4,9 @@
 
 ### Code Challenge
 
-- [ ] upgrade video player
+- [x] upgrade video player
 - [ ] more flash messages
 - [ ] delete comment
 - [ ] more css
 - [ ] deployment
+- [ ] 404 oage

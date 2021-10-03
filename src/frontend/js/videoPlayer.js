@@ -10,7 +10,8 @@ const videoContainer = document.querySelector("#videoContainer"),
   totalTime = document.querySelector("#totalTime"),
   timeline = document.querySelector("#timeline"),
   fullScreenBtn = document.querySelector("#fullScreen"),
-  fullScreenIcon = fullScreenBtn.querySelector("i");
+  fullScreenIcon = fullScreenBtn.querySelector("i"),
+  commentBox = document.querySelector(".video__add-comments");
 
 let controlMouseLeaveTimeout = null;
 let controlMovementTimeout = null;
@@ -101,8 +102,17 @@ const handleMouseLeave = () => {
 const handleKeyPress = (event) => {
   const { key } = event;
   if (key === " ") {
+    event.preventDefault();
     handlePlayClick();
   }
+};
+
+const handleCommentClick = () => {
+  window.removeEventListener("keypress", handleKeyPress);
+};
+
+const handleVideContainerClick = () => {
+  window.addEventListener("keypress", handleKeyPress);
 };
 
 ////////////////////// for view record ////////////////////////////////
@@ -125,6 +135,8 @@ video.addEventListener("mouseleave", handleMouseLeave);
 timeline.addEventListener("input", handleTimelineChange);
 fullScreenBtn.addEventListener("click", handleFullScreen);
 window.addEventListener("keypress", handleKeyPress);
+commentBox.addEventListener("click", handleCommentClick);
+videoContainer.addEventListener("click", handleVideContainerClick);
 
 if (video.readyState == 4) {
   handleLoadedMetaData();

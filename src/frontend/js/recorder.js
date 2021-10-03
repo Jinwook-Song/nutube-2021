@@ -105,12 +105,16 @@ const handleStart = () => {
 };
 
 const init = async () => {
+  actionBtn.innerText = "loading...";
+  actionBtn.removeEventListener("click", init);
+  actionBtn.addEventListener("click", handleStart);
+
   actionBtn.disabled = true;
   stream = await navigator.mediaDevices.getUserMedia({
     audio: false,
     video: {
-      width: 1024,
-      height: 576,
+      width: 512,
+      height: 288,
     },
   });
   video.srcObject = stream;
@@ -119,6 +123,4 @@ const init = async () => {
   actionBtn.innerText = "Start Recording";
 };
 
-init();
-
-actionBtn.addEventListener("click", handleStart);
+actionBtn.addEventListener("click", init);
