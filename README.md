@@ -9,4 +9,4 @@
 - [ ] delete comment
 - [ ] more css
 - [ ] deployment
-- [ ] 404 oage
+- [ ] 404 page

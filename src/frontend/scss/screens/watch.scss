@@ -1,5 +1,6 @@
 .video__data {
   margin-top: 20px;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
   .video__title {
@@ -21,15 +22,39 @@
 .video__comments {
   display: flex;
   flex-direction: column;
-  max-width: 320px;
+  max-width: 80%;
   width: 100%;
   margin: 0 auto;
   margin-top: 20px;
   .video__comment {
+    display: flex;
+
     padding: 10px;
     border-radius: 9999px;
     background-color: white;
     color: black;
     margin-bottom: 10px;
+  }
+  .video__comment :nth-child(2) {
+    padding-left: 10px;
+    width: 95%;
+  }
+}
+
+.video__add-comments {
+  width: 100%;
+  .video__comment-form {
+    display: flex;
+    justify-content: space-between;
+    max-width: 80%;
+    textarea {
+      width: 90%;
+      height: 35px;
+    }
+    button {
+      background-color: rgba(25, 25, 25, 0.7);
+      width: 10%;
+      font-size: 25px;
+    }
   }
 }

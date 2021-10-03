@@ -174,7 +174,7 @@ export const postEdit = async (req, res) => {
   );
   req.session.user = updatedUser;
   req.flash("success", "Updated Profile.");
-  return res.redirect("/users/edit");
+  return res.redirect(`/users/${id}`);
 };
 
 // Change Password
