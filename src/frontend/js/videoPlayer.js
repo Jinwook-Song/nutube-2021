@@ -135,7 +135,7 @@ video.addEventListener("mouseleave", handleMouseLeave);
 timeline.addEventListener("input", handleTimelineChange);
 fullScreenBtn.addEventListener("click", handleFullScreen);
 window.addEventListener("keypress", handleKeyPress);
-commentBox.addEventListener("click", handleCommentClick);
+commentBox?.addEventListener("click", handleCommentClick);
 videoContainer.addEventListener("click", handleVideContainerClick);
 
 if (video.readyState == 4) {

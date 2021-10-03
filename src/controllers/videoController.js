@@ -55,6 +55,7 @@ export const postUpload = async (req, res) => {
       errorMessage: error._message,
     });
   }
+  req.flash("success", "Uploaded!");
   return res.redirect("/");
 };
 
@@ -118,6 +119,7 @@ export const deleteVideo = async (req, res) => {
   // clean user DB
   user.videos.splice(user.videos.indexOf(id), 1);
   user.save();
+  req.flash("success", "Deleted.");
   return res.redirect("/");
 };
 

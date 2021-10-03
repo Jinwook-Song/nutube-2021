@@ -495,14 +495,25 @@ hr {
   animation-delay: 4s;
 }
 .message.error {
+  opacity: 0.9;
   background-color: tomato;
   color: white;
 }
 .message.info {
-  background-color: #ebd512;
+  opacity: 0.9;
+  background-color: #1277eb;
   color: white;
 }
-.message.sucess {
+.message.success {
+  opacity: 0.9;
   background-color: #2ab907;
   color: white;
+}
+
+#errorMessage {
+  display: flex;
+  justify-content: center;
+  color: red;
+  font-weight: 600;
+  margin-bottom: 10px;
 }

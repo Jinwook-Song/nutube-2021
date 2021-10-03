@@ -5,7 +5,7 @@
 ### Code Challenge
 
 - [x] upgrade video player
-- [ ] more flash messages
+- [x] more flash messages
 - [ ] delete comment
 - [ ] more css
 - [ ] deployment

@@ -59,6 +59,7 @@ export const postLogin = async (req, res) => {
   // give some informations to Each browser's server session object
   req.session.loggedIn = true;
   req.session.user = user;
+  req.flash("info", `Hello ${user.username}.`);
   return res.redirect("/");
 };
 
@@ -113,6 +114,7 @@ export const finishGithubLogin = async (req, res) => {
     );
     if (!emailObj) {
       // set notification
+      req.flash("error", "Email doesn't exist.");
       return res.redirect("/login");
     }
     let user = await User.findOne({ email: emailObj.email });
@@ -131,6 +133,7 @@ export const finishGithubLogin = async (req, res) => {
     // logged user in
     req.session.loggedIn = true;
     req.session.user = user;
+    req.flash("info", `Hello ${user.username}.`);
     return res.redirect("/");
   } else {
     return res.redirect("/login");
@@ -139,7 +142,7 @@ export const finishGithubLogin = async (req, res) => {
 
 // Logout
 export const logout = (req, res) => {
-  req.flash("info", "Bye Bye");
+  req.flash("info", "Bye Bye ~");
   req.session.loggedIn = false;
   req.session.user = null;
   // req.session.destroy();
@@ -170,6 +173,7 @@ export const postEdit = async (req, res) => {
     { new: true }
   );
   req.session.user = updatedUser;
+  req.flash("success", "Updated Profile.");
   return res.redirect("/users/edit");
 };
 
@@ -177,7 +181,6 @@ export const postEdit = async (req, res) => {
 export const getChangePassword = (req, res) => {
   if (req.session.user.githubLogin === true) {
     req.flash("error", "Can't change password.");
-
     return res.redirect("/");
   }
   return res.render("change-password", { pageTitle: "Change Password" });
@@ -205,10 +208,9 @@ export const postChangePassword = async (req, res) => {
   }
   user.password = newPW;
   await user.save(); // triger the pre middleware
-  req.flash("info", "Password updated");
-
   // send notification
-  return res.redirect("/users/logout");
+  req.flash("success", "Password updated.");
+  return res.redirect(`/users/${id}`);
 };
 
 // Profile

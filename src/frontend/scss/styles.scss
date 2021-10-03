@@ -71,15 +71,26 @@ hr {
   animation: goAway 0.5s ease-in-out forwards;
   animation-delay: 4s;
   &.error {
+    opacity: 0.9;
     background-color: tomato;
     color: white;
   }
   &.info {
-    background-color: rgb(235, 213, 18);
+    opacity: 0.9;
+    background-color: rgb(18, 119, 235);
     color: white;
   }
-  &.sucess {
+  &.success {
+    opacity: 0.9;
     background-color: rgb(42, 185, 7);
     color: white;
   }
+}
+
+#errorMessage {
+  display: flex;
+  justify-content: center;
+  color: red;
+  font-weight: 600;
+  margin-bottom: 10px;
 }

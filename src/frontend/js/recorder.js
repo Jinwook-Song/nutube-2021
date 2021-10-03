@@ -111,7 +111,7 @@ const init = async () => {
 
   actionBtn.disabled = true;
   stream = await navigator.mediaDevices.getUserMedia({
-    audio: false,
+    audio: true,
     video: {
       width: 512,
       height: 288,
