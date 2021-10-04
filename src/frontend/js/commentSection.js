@@ -1,5 +1,20 @@
 const videoContainer = document.getElementById("videoContainer");
 const form = document.getElementById("commentForm");
+const deleteCommentBtns = document.querySelectorAll(".deleteComment");
+
+const handleDeleteComment = async (event) => {
+  const li = event.srcElement.parentNode;
+  const {
+    dataset: { id: commentId },
+  } = li;
+  li.remove();
+  const response = await fetch(`/api/comments/${commentId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
 
 // fake comment like real-time
 const addComment = (text, id) => {
@@ -11,12 +26,15 @@ const addComment = (text, id) => {
   icon.className = "fas fa-comment";
   const span = document.createElement("span");
   const span2 = document.createElement("span");
+  span2.className = "deleteFakeComment";
   span.innerText = `  ${text}`;
   span2.innerText = "❌";
   newComment.appendChild(icon);
   newComment.appendChild(span);
   newComment.appendChild(span2);
   videoComments.prepend(newComment);
+
+  span2.addEventListener("click", handleDeleteComment);
 };
 
 const handleSubmit = async (event) => {
@@ -34,13 +52,14 @@ const handleSubmit = async (event) => {
     },
     body: JSON.stringify({ text }),
   });
-  textarea.value = "";
   if (response.status === 201) {
+    textarea.value = "";
     const { newCommentId } = await response.json();
     addComment(text, newCommentId);
   }
 };
 
-if (form) {
-  form.addEventListener("submit", handleSubmit);
-}
+form?.addEventListener("submit", handleSubmit);
+deleteCommentBtns?.forEach((deleteCommentBtn) =>
+  deleteCommentBtn.addEventListener("click", handleDeleteComment)
+);

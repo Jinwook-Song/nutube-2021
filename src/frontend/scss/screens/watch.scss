@@ -39,6 +39,10 @@
     padding-left: 10px;
     width: 95%;
   }
+  .deleteComment,
+  .deleteFakeComment {
+    cursor: pointer;
+  }
 }
 
 .video__add-comments {
@@ -55,6 +59,7 @@
       background-color: rgba(25, 25, 25, 0.7);
       width: 10%;
       font-size: 25px;
+      cursor: pointer;
     }
   }
 }

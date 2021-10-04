@@ -449,6 +449,10 @@ form label {
   padding-left: 10px;
   width: 95%;
 }
+.video__comments .deleteComment,
+.video__comments .deleteFakeComment {
+  cursor: pointer;
+}
 
 .video__add-comments {
   width: 100%;
@@ -466,6 +470,7 @@ form label {
   background-color: rgba(25, 25, 25, 0.7);
   width: 10%;
   font-size: 25px;
+  cursor: pointer;
 }
 
 a {

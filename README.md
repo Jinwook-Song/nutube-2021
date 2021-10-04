@@ -6,7 +6,9 @@
 
 - [x] upgrade video player
 - [x] more flash messages
-- [ ] delete comment
-- [ ] more css
+- [x] delete comment
 - [ ] deployment
 - [ ] 404 page
+- [ ] edit comment
+- [ ] more css
+- [ ] clear DB

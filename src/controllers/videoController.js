@@ -149,7 +149,7 @@ export const registerView = async (req, res) => {
   return res.sendStatus(200);
 };
 
-// Comments
+// Create Comments
 export const createComment = async (req, res) => {
   const {
     session: { user },
@@ -169,4 +169,24 @@ export const createComment = async (req, res) => {
   video.comments.push(comment._id);
   video.save();
   return res.status(201).json({ newCommentId: comment._id });
+};
+
+// Delete Comments
+export const deleteComment = async (req, res) => {
+  const {
+    session: { user },
+    params: { id: commentId },
+  } = req;
+  const comment = await Comment.findById(commentId)
+    .populate("video")
+    .populate("owner");
+  if (!comment) {
+    return res.sendStatus(404);
+  }
+  if (String(user._id) !== String(comment.owner.id)) {
+    return res.status(403).redirect("/");
+  }
+  await Comment.findByIdAndDelete(commentId);
+  // clear DB
+  return res.status("200").redirect(`/videos/${comment.video._id}`);
 };
