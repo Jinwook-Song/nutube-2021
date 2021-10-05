@@ -12,6 +12,6 @@
 - [ ] 404 page
 - [ ] edit comment
 - [ ] more css
-- [ ] clear DB
+- [ ] clear DB(mongo Atlas, AWS)
 
 ## https://nutube-2021.herokuapp.com/
