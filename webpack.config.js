@@ -8,8 +8,6 @@ module.exports = {
     recorder: "./src/frontend/js/recorder.js",
     commentSection: "./src/frontend/js/commentSection.js",
   },
-  mode: "development",
-  watch: true,
   plugins: [
     new MiniCssExtractPlugin({
       filename: "css/styles.css",
