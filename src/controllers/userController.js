@@ -161,7 +161,6 @@ export const postEdit = async (req, res) => {
     body: { name, email, username, location },
     file,
   } = req;
-  console.log(file);
   const updatedUser = await User.findByIdAndUpdate(
     id,
     {
