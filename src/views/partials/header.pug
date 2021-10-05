@@ -14,12 +14,12 @@ header
                 li
                     a(href="/users/logout")  Log Out
                 li
-                    a(href=`/users/${loggedInUser._id}`) 
-                        if loggedInUser.avatarUrl.incldues("github")
+                    a(href=`/users/${loggedInUser._id}`)
+                        if loggedInUser.avatarUrl 
+                            if loggedInUser.avatarUrl.incldues("github")
                                 img.header__avatar(src=loggedInUser.avatarUrl,crossorigin)
                             else
                                 img.header__avatar(src="/" + loggedInUser.avatarUrl,crossorigin)
-
                         else
                             span.header__avatar 😀
             else
