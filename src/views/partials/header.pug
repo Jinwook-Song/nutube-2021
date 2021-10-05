@@ -16,7 +16,11 @@ header
                 li
                     a(href=`/users/${loggedInUser._id}`) 
                         if loggedInUser.avatarUrl
-                            img.header__avatar(src="/" + loggedInUser.avatarUrl,crossorigin)
+                            if loggedInUser.githubLogin
+                                img.header__avatar(src=loggedInUser.avatarUrl,crossorigin)
+                            else
+                                img.header__avatar(src="/" + loggedInUser.avatarUrl,crossorigin)
+
                         else
                             span.header__avatar 😀
             else
