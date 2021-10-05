@@ -1,4 +1,19 @@
 import multer from "multer";
+import multerS3 from "multer-s3";
+import aws from "aws-sdk";
+
+const s3 = new aws.S3({
+  credentials: {
+    accessKeyId: process.env.AWS_ID,
+    secretAccessKey: process.env.AWS_SECRET,
+  },
+});
+
+const multerUploader = multerS3({
+  s3: s3,
+  bucket: "nutube",
+  acl: "public-read",
+});
 
 export const localsMiddleware = (req, res, next) => {
   // pug can access to locals object
@@ -31,6 +46,7 @@ export const avatarUpload = multer({
   limits: {
     fileSize: 3000000, // 3MB
   },
+  storage: multerUploader,
 });
 
 export const videoUpload = multer({
@@ -38,4 +54,5 @@ export const videoUpload = multer({
   limits: {
     fileSize: 15000000, // 15MB
   },
+  storage: multerUploader,
 });
