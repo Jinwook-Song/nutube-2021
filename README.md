@@ -7,7 +7,8 @@
 - [x] upgrade video player
 - [x] more flash messages
 - [x] delete comment
-- [ ] deployment
+- [x] deployment
+- [ ] classify url with local and heroku
 - [ ] 404 page
 - [ ] edit comment
 - [ ] more css
