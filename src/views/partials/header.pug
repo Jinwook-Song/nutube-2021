@@ -15,8 +15,7 @@ header
                     a(href="/users/logout")  Log Out
                 li
                     a(href=`/users/${loggedInUser._id}`) 
-                        if loggedInUser.avatarUrl
-                            if loggedInUser.githubLogin
+                        if loggedInUser.avatarUrl?.incldues("github")
                                 img.header__avatar(src=loggedInUser.avatarUrl,crossorigin)
                             else
                                 img.header__avatar(src="/" + loggedInUser.avatarUrl,crossorigin)
