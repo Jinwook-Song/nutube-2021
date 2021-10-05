@@ -7,8 +7,10 @@
     "url": "git+https://github.com/Jinwook-Song/nutube-2021.git"
   },
   "scripts": {
-    "dev:backend": "nodemon",
-    "dev:frontend": "webpack"
+    "start": "node build/init.js",
+    "build:server": "babel src -d build",
+    "dev:server": "nodemon",
+    "dev:assets": "webpack"
   },
   "author": "Jinwook Song<wlsdnr129@naver.com>",
   "license": "MIT",
@@ -33,6 +35,7 @@
     "regenerator-runtime": "^0.13.9"
   },
   "devDependencies": {
+    "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.5",
     "@babel/node": "^7.15.4",
     "@babel/preset-env": "^7.15.6",
