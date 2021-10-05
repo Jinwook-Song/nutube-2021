@@ -6,7 +6,7 @@ import "./models/User";
 import "./models/Comment";
 import app from "./server";
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000; // for heroku
 
 const handleListening = () =>
   console.log(`✅ Listening on http://localhost:${PORT}`);
