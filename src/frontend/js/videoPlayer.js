@@ -17,6 +17,10 @@ let controlMouseLeaveTimeout = null;
 let controlMovementTimeout = null;
 video.volume = 0.5; // default volume
 
+video.paused
+  ? (playBtnIcon.classList = "fas fa-pause")
+  : (playBtnIcon.classList = "fas fa-play");
+
 const handlePlayClick = () => {
   video.paused
     ? (video.play(), (playBtnIcon.classList = "fas fa-pause"))

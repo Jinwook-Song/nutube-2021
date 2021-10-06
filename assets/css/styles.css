@@ -320,6 +320,7 @@ input[type=submit]:disabled,
 }
 #videoContainer .videoControls .videoControls__play .videoControls__playBtn {
   margin: 0px 15px;
+  cursor: pointer;
 }
 #videoContainer .videoControls .videoControls__play .videoControls__time {
   font-size: 12px;
