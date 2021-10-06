@@ -8,9 +8,9 @@ block scripts
 block content
     div#videoContainer(data-id=video._id)
         if isHeroku
-            video(src=video.fileUrl autoplay playsinline)
+            video(src=video.fileUrl autoplay playsInline)
         else 
-            video(src=`/${video.fileUrl}` autoplay playsinline)
+            video(src=`/${video.fileUrl}` autoplay playsInline)
         div#videoControls.videoControls
             div.videoControls__play
                 span#play.videoControls__playBtn
