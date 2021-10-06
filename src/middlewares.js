@@ -21,6 +21,7 @@ const s3VideoUploader = multerS3({
   s3: s3,
   bucket: "nutube/videos",
   acl: "public-read",
+  contentType: "video/mp4",
 });
 
 export const localsMiddleware = (req, res, next) => {
