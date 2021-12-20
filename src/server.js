@@ -35,7 +35,10 @@ app.use((req, res, next) => {
 app.use(
   session({
     secret: process.env.COOKIE_SECRET,
+    // 세션 만료날짜 설정하도록
     resave: false,
+    // session이 변경된 경우에만 생성하고, 쿠키를 전달하도록
+    // 로그인한 경우에만 가능하도록
     saveUninitialized: false,
     // cookie: {
     //   maxAge: 5000,
