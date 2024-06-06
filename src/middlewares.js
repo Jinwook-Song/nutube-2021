@@ -20,6 +20,7 @@ const createS3Storage = (type) => {
       const ext = file.originalname.split('.').reverse()[0];
       cb(null, `${folder}/${req.session.user._id}/${Date.now().toString()}`);
     },
+    contentType: multerS3.AUTO_CONTENT_TYPE,
   });
 };
 

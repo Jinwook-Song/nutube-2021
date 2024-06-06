@@ -13,7 +13,8 @@
     "build:assets": "webpack --mode=production",
     "dev": "npm run dev:server & npm run dev:assets",
     "dev:server": "nodemon",
-    "dev:assets": "webpack --mode=development -w"
+    "dev:assets": "webpack --mode=development -w",
+    "deploy": "fly deploy"
   },
   "author": "Jinwook Song<wlsdnr129@naver.com>",
   "license": "MIT",
