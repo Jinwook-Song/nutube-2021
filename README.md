@@ -90,4 +90,4 @@
 
 ## 🔗 Link
 
-### [Youtube](https://nutube-2021.herokuapp.com/)
+### [DEPLOY](https://nutube-2021.fly.dev/)
