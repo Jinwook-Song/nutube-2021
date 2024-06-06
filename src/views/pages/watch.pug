@@ -10,7 +10,7 @@ block content
         if isHeroku
             video(src=video.fileUrl autoplay playsInline type="video/mp4")
         else 
-            video(src=`/${video.fileUrl}` autoplay playsInline type="video/mp4")
+            video(src=`${video.fileUrl}` autoplay playsInline type="video/mp4")
         div#videoControls.videoControls
             div.videoControls__play
                 span#play.videoControls__playBtn

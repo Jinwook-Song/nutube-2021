@@ -16,9 +16,6 @@ const createS3Storage = (type) => {
     s3: s3Client,
     bucket: process.env.AWS_BUCKET,
     acl: 'public-read',
-    metadata: (req, file, cb) => {
-      cb(null, { fieldName: file.fieldname });
-    },
     key: (req, file, cb) => {
       const ext = file.originalname.split('.').reverse()[0];
       cb(null, `${folder}/${req.session.user._id}/${Date.now().toString()}`);
